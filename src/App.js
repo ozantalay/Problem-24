@@ -1,7 +1,15 @@
 import { CheckIcon } from '@heroicons/react/20/solid'
+import { useRef } from 'react'
 
 export default function LandingPage() {
   // "Fiyatlandırmaya gidin" tıklandığında kaydırma işlemi yumuşak bir şekilde gerçekleşmesi gerekiyor
+
+  const ref=useRef(null)
+  const handleScroll=()=>{
+    if(ref.current){
+      ref.current.scrollIntoView({behavior:"smooth"})
+    }
+  }
   return (
     <>
       <div className='relative pt-14'>
@@ -29,7 +37,9 @@ export default function LandingPage() {
                 fugiat aliqua.
               </p>
               <div className='mt-10 flex items-center justify-center'>
-                <button className='rounded-md bg-indigo-600 px-4 py-3 text-base font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'>
+                <button className='rounded-md bg-indigo-600 px-4 py-3 text-base font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+                onClick={handleScroll}
+                >
                   Fiyatlandırmaya gidin
                 </button>
               </div>
@@ -51,7 +61,7 @@ export default function LandingPage() {
             Distinctio et nulla eum soluta et neque labore quibusdam. Saepe et
             quasi iusto modi velit ut non voluptas in. Explicabo id ut laborum.
           </p>
-          <div className='isolate mx-auto mt-16 grid max-w-sm grid-cols-1 gap-y-8 sm:mt-20'>
+          <div className='isolate mx-auto mt-16 grid max-w-sm grid-cols-1 gap-y-8 sm:mt-20' ref={ref}>
             <div className='flex flex-col justify-center rounded-3xl bg-white p-8 ring-1 ring-gray-200 xl:p-10 lg:z-10 lg:rounded-b-none'>
               <div>
                 <div className='flex items-center justify-between gap-x-4'>
